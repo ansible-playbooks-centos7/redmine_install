@@ -1,0 +1,7 @@
+- name: Install PostgreSQL with yum
+  yum:
+    name:
+      - postgresql-devel
+      - postgresql-server
+      - python-psycopg2
+    state: present
