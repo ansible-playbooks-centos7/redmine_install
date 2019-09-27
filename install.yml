@@ -13,6 +13,7 @@
 
   roles:
     - role: robertdebock.selinux
+    - role: timezone
     - role: httpd
     - role: geerlingguy.ruby
     - role: postgresql
