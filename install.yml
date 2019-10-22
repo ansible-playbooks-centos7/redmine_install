@@ -1,5 +1,5 @@
 - hosts: all
-  become: yes
+  become: true
 
   vars:
     ruby_install_from_source: true
@@ -19,4 +19,5 @@
     - role: postgresql
     - role: redmine/create-pg-account-and-database
     - role: redmine/install
+    - role: redmine/add-themes
     - role: passenger
