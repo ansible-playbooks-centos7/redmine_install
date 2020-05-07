@@ -19,7 +19,7 @@ db_user: redmine
 #----------------------------------------------------
 # Redmineのチェックアウト元URL
 #----------------------------------------------------
-redmine_svn_url: http://svn.redmine.org/redmine/branches/4.0-stable
+redmine_svn_url: http://svn.redmine.org/redmine/branches/4.1-stable
 
 #----------------------------------------------------
 # Redmineのデプロイ先ディレクトリ

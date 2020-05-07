@@ -2,14 +2,12 @@
   become: true
 
   vars:
+    redmine_svn_url: http://svn.redmine.org/redmine/branches/4.1-stable
     ruby_install_from_source: true
-    ruby_download_url: https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.3.tar.gz
-    ruby_version: 2.5.3
+    ruby_download_url: https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz
+    ruby_version: 2.6.6
     # The state, either disabled, permissive or enforcing.
     selinux_state: permissive
-
-  vars_files:
-    - vars/default.yml
 
   roles:
     - role: robertdebock.selinux
