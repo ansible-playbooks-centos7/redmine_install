@@ -1,3 +1,4 @@
+---
 - name: Set timezone to Asia/Tokyo
   timezone:
     name: '{{ system_timezone }}'

@@ -1,0 +1,18 @@
+---
+- hosts: all
+
+  tasks:
+    - name: create a cloudformation stack
+      cloudformation:
+        stack_name: circleci-redmine41
+        state: present
+        region: ap-northeast-1
+        template: cfn-temp-centos7-hvm.yaml
+        template_parameters:
+          KeyName: github-actions
+      register: CFN_RESULTS
+
+    - name: Create aws_ec2.yml inventory file
+      template:
+        src: aws_ec2.yml.template
+        dest: aws_ec2.yml

@@ -1,0 +1,39 @@
+---
+jobs:
+  build:
+    docker:
+      - image: tomonorimatsumura/ansible-boto3:python3.8-latest
+
+    steps:
+      - checkout
+      - run:
+          name: Create ec2 instance
+          command: |
+            cd tests
+            ansible-playbook -i localhost, -c local create-stack.yml \
+            -e ansible_python_interpreter=/usr/local/bin/python3
+
+      - run:
+          name: Install Ansible galaxy roles
+          command: |
+            ansible-galaxy install -r roles/requirements.yml
+
+      - run:
+          name: Test playbook
+          command: |
+            echo -n $SSH_KEY_BASE64 | base64 --decode > private-key.pem
+            chmod 600 private-key.pem
+            ansible-playbook -i tests/aws_ec2.yml --private-key private-key.pem \
+            -u centos install.yml
+
+      - run:
+          name: Delete ec2 instance
+          command: |
+            cd tests
+            ansible-playbook -i localhost, -c local delete-stack.yml \
+            -e ansible_python_interpreter=/usr/local/bin/python3
+
+version: 2
+test-checkout:
+  jobs:
+    - build

@@ -1,3 +1,4 @@
+---
 - name: Delete working directory
   file:
     path: '{{ work_dir }}'
@@ -12,9 +13,11 @@
 - name: Create a new PostgreSQL database cluster
   command:
     postgresql-setup initdb
+  changed_when: False
+  ignore_errors: True
   environment:
     PATH:
-      "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:{{ ansible_env.PATH }} "
+      "{{ ansible_env.PATH }} "
 
 - name: Creare patch for adding host-based authentication into pg_hba.conf
   copy:
@@ -32,9 +35,6 @@
     enabled: yes
 
 - name: Add privilege escalation to user 'postgres'
-  environment:
-    PATH:
-      "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:{{ ansible_env.PATH }} "
   lineinfile:
     dest: /etc/sudoers.d/postgres
     owner: root
@@ -44,8 +44,12 @@
     state: present
     create: yes
     validate: "visudo -cf %s"
+  environment:
+    PATH:
+      "{{ ansible_env.PATH }} "
 
 - name: Create PostgreSQL user
+  become: True
   become_user: postgres
   become_method: sudo
   postgresql_user:
@@ -53,6 +57,7 @@
     password: '{{ db_password }}'
 
 - name: Create database
+  become: True
   become_user: postgres
   become_method: sudo
   postgresql_db:

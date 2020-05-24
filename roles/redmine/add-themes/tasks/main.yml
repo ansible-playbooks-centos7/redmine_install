@@ -1,34 +1,42 @@
+---
 - name: Install farend_basic
   git:
     repo: https://github.com/farend/redmine_theme_farend_basic.git
     dest: "{{ redmine_dir }}/public/themes/farend_basic"
+    version: master
 
 - name: Install flat_theme
   git:
     repo: https://github.com/ssaito/redmine-theme-flat.git
     dest: "{{ redmine_dir }}/public/themes/redmine_flat"
+    version: master
 
 - name: Install theme_gitmike
   git:
     repo: https://github.com/makotokw/redmine-theme-gitmike.git
     dest: "{{ redmine_dir }}/public/themes/gitmike"
+    version: master
 
 - name: Install flatly_light
   git:
     repo: https://github.com/Nitrino/flatly_light_redmine.git
     dest: "{{ redmine_dir }}/public/themes/flatly_light_redmine"
+    version: master
 
 - name: Install theme_purplemine2
   git:
     repo: https://github.com/taqueci/PurpleMine2.git
     dest: "{{ redmine_dir }}/public/themes/PurpleMine2"
+    version: master
 
 - name: Install theme_kodomo
   git:
     repo: https://github.com/akiko-pusu/redmine_theme_kodomo.git
     dest: "{{ redmine_dir }}/public/themes/kodomo"
+    version: master
 
 - name: farend_bleuclair
   git:
     repo: https://github.com/farend/redmine_theme_farend_bleuclair.git
     dest: "{{ redmine_dir }}/public/themes/bleuclair"
+    version: master

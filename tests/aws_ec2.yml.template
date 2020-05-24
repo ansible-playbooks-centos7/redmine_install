@@ -1,0 +1,4 @@
+plugin: aws_ec2
+regions:
+  - ap-northeast-1
+vpc_id: {{ CFN_RESULTS.stack_outputs.VpcId }}
