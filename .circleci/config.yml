@@ -7,31 +7,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Create ec2 instance
+          name: Create galaxy dependencies file in 'molecule/default/'
           command: |
-            cd tests
-            ansible-playbook -i localhost, -c local create-stack.yml \
-            -e ansible_python_interpreter=/usr/local/bin/python3
+            cp roles/requirements.yml molecule/default/requirements.yml
 
       - run:
-          name: Install Ansible galaxy roles
+          name: Test with molecule
           command: |
-            ansible-galaxy install -r roles/requirements.yml
-
-      - run:
-          name: Test playbook
-          command: |
-            echo -n $SSH_KEY_BASE64 | base64 --decode > private-key.pem
-            chmod 600 private-key.pem
-            ansible-playbook -i tests/aws_ec2.yml --private-key private-key.pem \
-            -u centos install.yml
-
-      - run:
-          name: Delete ec2 instance
-          command: |
-            cd tests
-            ansible-playbook -i localhost, -c local delete-stack.yml \
-            -e ansible_python_interpreter=/usr/local/bin/python3
+            molecule test
+          environment:
+            EC2_REGION: ap-northeast-1
+            PY_COLORS: '1'
+            ANSIBLE_FORCE_COLOR: '1'
 
 version: 2
 test-checkout:

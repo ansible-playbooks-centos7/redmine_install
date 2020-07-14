@@ -1,9 +1,0 @@
----
-- hosts: all
-
-  tasks:
-    - name: Delete a cloudformation stack
-      cloudformation:
-        stack_name: circleci-redmine41
-        state: absent
-        region: ap-northeast-1
