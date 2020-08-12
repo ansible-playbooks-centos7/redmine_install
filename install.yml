@@ -12,11 +12,20 @@
 
   roles:
     - role: robertdebock.selinux
+      tags: selinux
     - role: timezone
+      tags: timezone
     - role: httpd
+      tags: httpd
     - role: geerlingguy.ruby
+      tags: ruby
     - role: postgresql
+      tags: postgresql
     - role: redmine/create-pg-account-and-database
+      tags: database
     - role: redmine/install
+      tags: redmine
     - role: redmine/add-themes
+      tags: themes
     - role: passenger
+      tags: passenger
