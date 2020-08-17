@@ -10,6 +10,7 @@ platforms:
     vpc_subnet_id: subnet-022a704b3061b8b39
 provisioner:
   name: ansible
+  log: True
   playbooks:
     converge: ../../install.yml
 verifier:

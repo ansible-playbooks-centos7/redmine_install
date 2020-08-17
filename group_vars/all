@@ -57,8 +57,6 @@ work_dir: /tmp/redmine-install-dir
 httpd_conf_confd: redmine.conf
 
 #----------------------------------------------------
-# アクセスをコントロールするIPアドレス／ドメイン
+# Passengerをインストールする時SWAPを有効にするか
 #----------------------------------------------------
-requires:
-  example.com: Require host example.com
-  127.0.0.1: Require ip 127.0.0.1
+passenger_swap: False

@@ -27,15 +27,21 @@
 
 - name: Copy the file to be used for swap
   command: dd if=/dev/zero of=/swap bs=1M count=1024
-  when: PASSENGER_INSTALLED is failed
+  when:
+    - PASSENGER_INSTALLED is failed
+    - passenger_swap | bool
 
 - name: Format the file for swap
   command: mkswap /swap
-  when: PASSENGER_INSTALLED is failed
+  when:
+    - PASSENGER_INSTALLED is failed
+    - passenger_swap | bool
 
 - name: Add the file to the system as a swap file
   command: swapon /swap
-  when: PASSENGER_INSTALLED is failed
+  when:
+    - PASSENGER_INSTALLED is failed
+    - passenger_swap | bool
 
 - name: Run the Passenger Apache module installer
   command: passenger-install-apache2-module --auto --languages ruby
