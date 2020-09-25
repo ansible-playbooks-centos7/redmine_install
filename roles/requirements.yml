@@ -1,5 +1,6 @@
 ---
-- geerlingguy.ruby
-- robertdebock.bootstrap
-- robertdebock.reboot
-- robertdebock.selinux
+roles:
+  - name: geerlingguy.ruby
+  - name: robertdebock.bootstrap
+  - name: robertdebock.reboot
+  - name: robertdebock.selinux
