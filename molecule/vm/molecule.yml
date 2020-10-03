@@ -4,7 +4,7 @@ dependency:
 driver:
   name: ec2
 platforms:
-  - name: instance
+  - name: redmine
     image: '{{ AMI_ID }}'
     instance_type: t2.micro
     vpc_subnet_id: subnet-022a704b3061b8b39

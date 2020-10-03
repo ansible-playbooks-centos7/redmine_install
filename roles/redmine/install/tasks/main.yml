@@ -28,8 +28,10 @@
     PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
 
 - name: Checkout Redmine source codes
-  subversion:
-    repo: '{{ redmine_svn_url }}'
+  git:
+  git:
+    repo: '{{ redmine_git_url }}'
+    version: '{{ redmine_git_version }}'
     dest: '{{ redmine_dir }}'
 
 - name: "Create database.yml under {{ redmine_dir }}/config/"

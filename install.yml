@@ -3,7 +3,8 @@
   become: true
 
   vars:
-    redmine_svn_url: http://svn.redmine.org/redmine/branches/4.1-stable
+    redmine_git_url: https://github.com/redmine/redmine.git
+    redmine_git_version: '4.1.1'
     ruby_install_from_source: true
     ruby_download_url: https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.gz
     ruby_version: 2.6.6
