@@ -29,7 +29,6 @@
 
 - name: Checkout Redmine source codes
   git:
-  git:
     repo: '{{ redmine_git_url }}'
     version: '{{ redmine_git_version }}'
     dest: '{{ redmine_dir }}'

@@ -37,7 +37,10 @@ jobs:
       - run:
           name: Show Molecule version
           command: molecule --version
-version: 2
-test-checkout:
-  jobs:
-    - build
+
+version: 2.1
+workflows:
+  redmine-install:
+    jobs:
+      - build:
+          context: aws-credentials
