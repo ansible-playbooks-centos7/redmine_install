@@ -10,7 +10,9 @@ platforms:
     vpc_subnet_id: subnet-022a704b3061b8b39
 provisioner:
   name: ansible
-  log: True
+  connection_options:
+    passenger_swap: true
+  log: true
   playbooks:
     converge: ../../install.yml
 verifier:
