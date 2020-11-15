@@ -6,13 +6,14 @@ driver:
 platforms:
   - name: instance
     image: ghcr.io/docker-hub-tm/ansible-test/${MOLECULE_DISTRO:-centos7}:latest
-    pre_build_image: True
+    pre_build_image: true
     command: /sbin/init
-    privileged: True
+    privileged: true
 provisioner:
   name: ansible
   playbooks:
     converge: ../../install.yml
+  log: true
 verifier:
   name: ansible
 scenario:
