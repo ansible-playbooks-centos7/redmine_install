@@ -64,7 +64,12 @@ jobs:
             TZ: 'Asia/Tokyo'
       - run:
           name: Show Ansible version
-          command: ansible --version
+          command: |
+            pip list | grep ansible \
+            | GREP_COLORS='mt=01;34' egrep --color=always '[[:digit:]]' \
+            | GREP_COLORS='mt=01;34' egrep --color=always '\.' \
+            | GREP_COLORS='mt=01;33' egrep --color=always 'ansible.* '
+            ansible --version
       - run:
           name: Show Molecule version
           command: molecule --version
