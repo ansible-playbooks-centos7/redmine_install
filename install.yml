@@ -14,16 +14,20 @@
   roles:
     - role: robertdebock.selinux
       tags: selinux
+    - role: robertdebock.locale
+      tags: locale
     - role: timezone
       tags: timezone
     - role: httpd
       tags: httpd
-    - role: geerlingguy.ruby
+    - role: mamono210.ruby
       tags: ruby
     - role: postgresql
       tags: postgresql
     - role: redmine/create-pg-account-and-database
       tags: database
+    - role: geerlingguy.repo-epel
+      tags: repo-epel
     - role: redmine/install
       tags: redmine
     - role: redmine/add-themes
